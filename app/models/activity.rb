@@ -4,5 +4,4 @@ class Activity < ApplicationRecord
 
   validates :title, length: {in: 1..50}
   validates :description, presence: true
-  validates :categories, length: {:minimum => 1}
 end

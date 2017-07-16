@@ -1,0 +1,10 @@
+<h1>Welcome</h1>
+
+<%if logged_in?%>
+  <%= link_to "See Activities", activities_path %>
+  <%= link_to "See Categories", categories_path %>
+  <%= link_to "See Topics", topics_path %>
+<%else%>
+  <%= link_to "Sign in", sign_in_path %>
+  <%= link_to "Sign out", sign_out_path %>
+<%end%>
