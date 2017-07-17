@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   post 'sign_in', to: 'session#create'
   get 'sign_out', to: 'session#destroy'
 
-  get '/', to: 'sessions#home'
+  get '/', to: 'sessions#home', as: 'home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

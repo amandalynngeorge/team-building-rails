@@ -30,6 +30,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+
   end
 
   def destroy
@@ -37,7 +38,7 @@ class ActivitiesController < ApplicationController
 
   private
     def find_activity
-      @activity = Activity.find(params[:id])
+      @activity = Activity.find_by(title: params[:title])
     end
 
     def activity_params
