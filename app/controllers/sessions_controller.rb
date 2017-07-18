@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
 
   def create
     if params[:username].present? && params[:username] != ""
-      sessions[:username] = params[:username]
-      redirect_to user_path
-    else
+      session[:username] = params[:username]
       redirect_to home_path
+    else
+      redirect_to '/sessions/new'
     end
   end
 
@@ -29,7 +29,10 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    if session[:username].present?
       session.delete :username
+    end
+    redirect to sign_in_path
   end
 
 end
