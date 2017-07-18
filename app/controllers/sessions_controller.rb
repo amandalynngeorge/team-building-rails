@@ -1,21 +1,21 @@
 class SessionsController < ApplicationController
 
-  def home
+  def new
   end
 
-  def new
-    if current_user
-      redirect_to home_path
-    end
+  def sign_in
   end
 
   def create
-    if params[:user_id].present? && params[:user_id] != ""
-      sessions[:user_id] = params[:user_id]
+    if params[:username].present? && params[:username] != ""
+      sessions[:username] = params[:username]
       redirect_to user_path
     else
       redirect_to home_path
     end
+  end
+
+  def home
   end
 
   def show
@@ -29,11 +29,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    if session[:user_id].present?
-      session.delete
-    else
-      redirect_to home_path
-    end
+      session.delete :username
   end
 
 end

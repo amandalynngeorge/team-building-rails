@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
 
-  get 'sign_up', to: 'user#new'
-  get 'sign_in', to: 'session#new'
-  post 'sign_in', to: 'session#create'
-  get 'sign_out', to: 'session#destroy'
+  get '/sign_up', to: 'users#new'
+  get '/sign_in', to: 'sessions#new'
+  post '/sign_in', to: 'sessions#create'
+  post '/sign_out', to: 'sessions#destroy'
 
   get '/', to: 'sessions#home', as: 'home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

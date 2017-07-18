@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def logged_in?
     if !current_user
       flash[:error] = "Please log in"
-      redirect_to 'welcome#home'
+      redirect_to home_path
     end
   end
 
