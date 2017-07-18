@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :find_activity, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
 
   def new
     @activity = Activity.new
@@ -43,5 +44,12 @@ class ActivitiesController < ApplicationController
 
     def activity_params
       params.require(:activity).permit(:title, :description, :goal, :rules, :time, :category_id, :user_id)
+    end
+
+    def require_login
+      if !current_user
+        flash[:message] = "Please sign in"
+        redirect_to home_path
+      end
     end
 end
