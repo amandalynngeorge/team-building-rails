@@ -15,6 +15,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_login
+    if !current_user
+      flash[:message] = "Please sign in"
+      redirect_to home_path
+    end
+  end
+
 
   helper_method :logged_in?
   helper_method :require_login

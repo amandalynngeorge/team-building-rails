@@ -46,10 +46,5 @@ class ActivitiesController < ApplicationController
       params.require(:activity).permit(:title, :description, :goal, :rules, :time, :category_id, :user_id)
     end
 
-    def require_login
-      if !current_user
-        flash[:message] = "Please sign in"
-        redirect_to home_path
-      end
-    end
+    
 end
