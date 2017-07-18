@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def create
     if params[:username].present? && params[:username] != ""
-      session[:username] = params[:username]
+      session[:user_id] = @user.id
       redirect_to home_path
     else
       redirect_to '/sessions/new'
