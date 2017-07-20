@@ -1,0 +1,2 @@
+class ActivityTopic < ApplicationRecord
+end

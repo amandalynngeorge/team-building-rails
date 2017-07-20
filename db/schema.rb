@@ -22,11 +22,11 @@ ActiveRecord::Schema.define(version: 20170720184933) do
     t.integer "user_id"
   end
 
-  create_table "activities_and_topics", force: :cascade do |t|
+  create_table "activities_topics", force: :cascade do |t|
     t.integer "activity_id"
     t.integer "topic_id"
-    t.index ["activity_id"], name: "index_activities_and_topics_on_activity_id"
-    t.index ["topic_id"], name: "index_activities_and_topics_on_topic_id"
+    t.index ["activity_id"], name: "index_activities_topics_on_activity_id"
+    t.index ["topic_id"], name: "index_activities_topics_on_topic_id"
   end
 
   create_table "categories", force: :cascade do |t|

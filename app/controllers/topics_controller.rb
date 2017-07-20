@@ -2,6 +2,7 @@ class TopicsController < ApplicationController
   # before_action :require_login
 
   def new
+    @topic = Topic.new
   end
 
   def index
@@ -13,7 +14,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    topic = Topic.create(topic_params)
+    @topic = Topic.create(topic_params)
   end
 
 

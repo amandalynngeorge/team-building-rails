@@ -4,6 +4,8 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
+    @activity.category = Category.find_by(id: params[:category_id])
+    @activity.topics.build
   end
 
   def create
@@ -43,7 +45,7 @@ class ActivitiesController < ApplicationController
     end
 
     def activity_params
-      params.require(:activity).permit(:title, :description, :goal, :rules, :time, :category_id, :user_id, :topics => [])
+      params.require(:activity).permit(:title, :description, :goal, :rules, :time, :category_id, :user_id, :topic_ids => [], :topics => [])
     end
 
 

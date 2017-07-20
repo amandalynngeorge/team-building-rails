@@ -11,8 +11,6 @@
   <%= f.number_field :time %><br>
   <%= f.label "Category (required)" %><br>
   <%= f.collection_select :category_id, Category.all, :id, :name %><br>
-  <%= f.label "Topic (required)" %><br>
-  <%= f.collection_check_boxes :topic_ids, Topic.all, :id, :name %><br>
 
   <br>
   <%= submit_tag "Submit"%>
