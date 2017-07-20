@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def sign_in
+    
   end
 
   def create

@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :find_activity, only: [:show, :edit, :update, :destroy]
-  before_action :require_login
+  # before_action :require_login
 
   def new
     @activity = Activity.new
@@ -46,5 +46,5 @@ class ActivitiesController < ApplicationController
       params.require(:activity).permit(:title, :description, :goal, :rules, :time, :category_id, :user_id)
     end
 
-    
+
 end
