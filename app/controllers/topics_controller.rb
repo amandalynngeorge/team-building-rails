@@ -1,5 +1,4 @@
 class TopicsController < ApplicationController
-  before_action :find_topic, only: [:show, :edit, :update, :destroy]
   # before_action :require_login
 
   def new
@@ -10,22 +9,15 @@ class TopicsController < ApplicationController
   end
 
   def show
+    @topic = Topic.find_by(id: params[:id])
   end
 
   def create
-    @topic = Topic.new(topic_params)
-    if @topic.save
-      redirect_to topic_path(@topic)
-    else
-      render 'new'
-    end
+    topic = Topic.create(topic_params)
   end
 
 
   private
-    def find_topic
-      @topic = Topic.find_by(name: params[:name])
-    end
 
     def topic_params
       params.require(:topic).permit(:name)
