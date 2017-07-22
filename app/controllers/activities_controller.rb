@@ -4,6 +4,7 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
+    @activity.user = current_user
     @activity.category = Category.find_by(id: params[:category_id])
     @activity.topics.build
   end

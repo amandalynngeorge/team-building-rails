@@ -1,8 +1,8 @@
 <h1>Sign In</h1>
-<%= form_for @user, path: '/sign_in' do |f| %>
-  Email: <br>
-  <%= f.text_field :email %><br>
-  Password: <br>
+<%= form_for :user do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %><br>
+  <%= f.label :password %>
   <%= f.password_field :password %><br>
   <%= f.submit "Submit" %>
 <% end %>

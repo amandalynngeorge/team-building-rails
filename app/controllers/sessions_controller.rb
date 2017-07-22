@@ -1,15 +1,18 @@
 class SessionsController < ApplicationController
 
   def new
+
   end
 
   def sign_in
-    
+
   end
 
   def create
-    if params[:user_id].present? && params[:user_id] != ""
-      session[:user_id] = @user.id
+    user = User.find_by(username: params[:user][:username])
+    if user && user.authenticate(params[:user][:password])
+      session[:user_id] = user.id
+      flash[:message] = "Welcome back!"
       redirect_to activities_path
     else
       redirect_to '/sessions/new'
