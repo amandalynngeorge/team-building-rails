@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :activities
   has_many :categories, through: :activities
 
-  validates :username, uniqueness: true
-  validates :email, uniqueness: true
+  validates :username, uniqueness: {message: "This username is taken"}
+  validates :email, uniqueness: {message: "This email is taken"}
 
 end
