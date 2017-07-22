@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
     if session[:user_id].present?
       user = session[:user_id]
     end
+    user
   end
 
   def require_login

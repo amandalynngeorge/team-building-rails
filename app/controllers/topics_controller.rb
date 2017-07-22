@@ -18,11 +18,10 @@ class TopicsController < ApplicationController
   end
 
 
-  private
+private
 
-    def topic_params
-      params.require(:topic).permit(:name)
-    end
-
+  def topic_params
+    params.require(:topic).permit(:name)
+  end
 
 end
