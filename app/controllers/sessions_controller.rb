@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(username: params[:user][:username])
-    if user && user.authenticate(params[:user][:password])
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:message] = "Welcome back!"
       redirect_to activities_path
@@ -37,7 +37,7 @@ class SessionsController < ApplicationController
     if session[:user_id].present?
       session.delete :user_id
     end
-    redirect to sign_in_path
+    redirect_to sign_in_path
   end
 
 end
