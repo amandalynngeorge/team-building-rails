@@ -34,9 +34,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    if session[:user_id].present?
-      session.delete :user_id
-    end
+    reset_session
     redirect_to sign_in_path
   end
 
