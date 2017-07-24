@@ -3,12 +3,10 @@ class SessionsController < ApplicationController
   def new
     if current_user
       redirect_to user_path(current_user)
-      end
-
+    end
   end
 
   def sign_in
-
   end
 
   def create
