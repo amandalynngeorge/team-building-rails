@@ -6,17 +6,20 @@ class SessionsController < ApplicationController
     end
   end
 
-  def sign_in
-  end
-
   def create
-    user = User.find_by(username: params[:username])
-    if user && user.authenticate(params[:password])
+    if auth_hash = request.env["omniauth.auth"]
+      user = User.find_or_create_by_omniauth(auth_hash)
       session[:user_id] = user.id
-      flash[:message] = "Welcome back!"
       redirect_to activities_path
     else
-      redirect_to '/sessions/new'
+      user = User.find_by(email: params[:email])
+      if user && user.authenticate(params[:password])
+        session[:user_id] = user.id
+        flash[:message] = "Welcome back!"
+        redirect_to activities_path
+      else
+        redirect_to '/sessions/new'
+      end
     end
   end
 
@@ -27,11 +30,6 @@ class SessionsController < ApplicationController
     @user = current_user.username
   end
 
-  def edit
-  end
-
-  def index
-  end
 
   def destroy
     reset_session
