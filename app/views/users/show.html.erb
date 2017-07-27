@@ -1,1 +1,5 @@
 <h1> <%=@user.username%></h1>
+
+<% @user.activities.each do |act| %>
+  <%= link_to act.title, activity_path(act) %><br>
+<%end%>

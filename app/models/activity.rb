@@ -8,4 +8,8 @@ class Activity < ApplicationRecord
   validates :title, length: {in: 1..50, message: "needs at title"}
   validates :description, presence: {message: "needs a description"}
   validates_associated :topics, {message: "needs a topic"}
+
+  def self.short_to_long
+    self.order(time: :asc)
+  end
 end
