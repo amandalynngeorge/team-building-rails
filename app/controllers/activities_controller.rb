@@ -4,13 +4,11 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
-    @activity.user_id = current_user[:user_id]
-    @activity.category = Category.find_by(id: params[:category_id])
     @activity.topics.build
   end
 
   def create
-    @activity = Activity.new(activity_params)
+    @activity = current_user.activities.build(activity_params)
     if @activity.save
       redirect_to activity_path(@activity)
     else
@@ -30,7 +28,11 @@ class ActivitiesController < ApplicationController
   end
 
   def index
-    @activities = Activity.short_to_long
+    @activities = Activity.all.alpha
+  end
+
+  def order
+    @activities = Activities.all.short_to_long
   end
 
   def show
@@ -45,7 +47,7 @@ class ActivitiesController < ApplicationController
     end
 
     def activity_params
-      params.require(:activity).permit(:title, :description, :goal, :rules, :time, :category_id, :topic_ids => [], :topics_attributes => [])
+      params.require(:activity).permit(:title, :description, :goal, :rules, :time, :category_id, topic_attributes:[])
     end
 
 

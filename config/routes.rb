@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
 
-  get '/sign_in' => "sessions#new"
-  post '/sessions' => "sessions#create"
-
+  get '/sign_in', to: "sessions#new"
+  post '/sessions', to: "sessions#create"
   get '/sign_out', to: "sessions#destroy"
-
   root 'sessions#home', as: 'home'
 
   get '/auth/facebook/callback' => 'sessions#create'
+
+  get '/activities/order', to: "activities#order"
 end

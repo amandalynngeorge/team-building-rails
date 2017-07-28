@@ -23,9 +23,9 @@
   <%= f.number_field :time %><br>
   <%= f.label "Category (required)" %><br>
   <%= f.collection_select :category_id, Category.all, :id, :name %><br>
-  <%= fields_for :topics do |top|%>
-    <%= top.label "Topic" %><br>
-    <%= top.text_field :name %><br>
+  <%= f.fields_for activity.topics.build do |field|%>
+    <%= field.label "Topic" %><br>
+    <%= field.text_field :name %><br>
   <%end%>
   <br>
   <%= submit_tag "Submit"%>
