@@ -16,8 +16,4 @@ class User < ApplicationRecord
       user = User.create(email: oauth_email, password: SecureRandom.hex)
     end
   end
-
-
-
-
 end
