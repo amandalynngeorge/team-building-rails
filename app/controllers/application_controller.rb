@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     if !current_user
-      flash[:message] = "Please sign in"
+      flash[:message] = "Please sign in."
       redirect_to home_path
     end
   end
