@@ -30,10 +30,8 @@ class SessionsController < ApplicationController
     @user = current_user.username
   end
 
-
   def destroy
     reset_session
     redirect_to sign_in_path
   end
-
 end

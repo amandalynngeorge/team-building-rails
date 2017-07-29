@@ -1,7 +1,9 @@
 class Activity < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :category
-  has_and_belongs_to_many :topics
+  has_many :activity_topics
+  has_many :topics, through: :activity_topics
+  accepts_nested_attributes_for :topics
 
   # accepts_nested_attributes_for :topics, reject_if: proc {|attributes| attributes['name'].blank?}
 
@@ -12,7 +14,8 @@ class Activity < ApplicationRecord
   validates_associated :topics, {message: "needs a topic"}
 
   def topic_attributes=(topic_attributes)
-    byebug
+    activity.topic.build(topic_attributes)
+
   end
 
   def self.short_to_long

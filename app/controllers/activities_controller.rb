@@ -16,6 +16,13 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def index
+    @activities = Activity.all.alpha
+  end
+
+  def show
+  end
+
   def edit
   end
 
@@ -27,15 +34,8 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  def index
-    @activities = Activity.all.alpha
-  end
-
   def order
     @activities = Activities.all.short_to_long
-  end
-
-  def show
   end
 
   def destroy
@@ -43,14 +43,12 @@ class ActivitiesController < ApplicationController
     redirect_to activities_path
   end
 
-  private
-    def find_activity
-      @activity = Activity.find_by(id: params[:id])
-    end
+private
+  def find_activity
+    @activity = Activity.find_by(id: params[:id])
+  end
 
-    def activity_params
-      params.require(:activity).permit(:title, :description, :goal, :rules, :time, :category_id, topic_attributes:[])
-    end
-
-
+  def activity_params
+    params.require(:activity).permit(:title, :description, :goal, :rules, :time, :category_id, topic_attributes:[:name])
+  end
 end
