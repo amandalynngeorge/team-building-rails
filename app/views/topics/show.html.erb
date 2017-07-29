@@ -1,1 +1,5 @@
 <h1><%=@topic.name%></h1>
+
+<%@topic.activities.each do |act| %>
+  <%= link_to act.title, activity_path(act)%>
+<%end%>
