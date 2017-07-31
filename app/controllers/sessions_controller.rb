@@ -3,9 +3,6 @@ class SessionsController < ApplicationController
   def new
     if current_user
       redirect_to user_path(current_user)
-    else
-      flash[:message] = "We haven't met. Please sign up."
-      redirect_to new_user_path
     end
   end
 

@@ -4,17 +4,17 @@ class Activity < ApplicationRecord
 
   has_many :activity_topics
   has_many :topics, through: :activity_topics
-  accepts_nested_attributes_for :topics, reject_if: proc {|attributes| attributes['name'].blank?}
 
   validates :title, length: {in: 1..50}
   validates :description, presence: true
   validates :time, presence: true
   validates_associated :category, presence: true
-  validates_associated :topics
+  validates_associated :topics, presence: true
 
-  def topic_attributes=(topic_attributes)
-    activity.topic.build(topic_attributes)
-
+  def topics_attributes=(topics_attributes)
+    topics_attributes.each do |topic_attributes|
+        self.topics.build(topic_attributes)
+    end
   end
 
   def self.short_to_long
