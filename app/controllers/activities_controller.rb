@@ -4,14 +4,11 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
-    @activity.topics.build 
-
+    @activity.topics.build
   end
 
   def create
     @activity = current_user.activities.build(activity_params)
-    raise params.inspect
-
     if @activity.save
       redirect_to activity_path(@activity)
     else

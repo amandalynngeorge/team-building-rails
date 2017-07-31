@@ -12,7 +12,17 @@ class Activity < ApplicationRecord
   validates_associated :topics, presence: true
 
   def topics_attributes=(topics_attributes)
-    topics_attributes.each do |topic_attributes|
+    #params = "activity"=>{
+      # "title"=>"ffer",
+      # "description"=>"df",
+      # "goal"=>"e",
+      # "rules"=>"fe",
+      # "time"=>"9",
+      # "category_id"=>"1",
+      # "topics_attributes"=>{
+        #"0"=>{"name"=>"fejk"}}
+      #}
+    topics_attributes.each do |i, topic_attributes|
         self.topics.build(topic_attributes)
     end
   end
