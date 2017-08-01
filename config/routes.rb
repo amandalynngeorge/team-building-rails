@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :topics
-  resources :activities
+  resources :activities do
+    collection do
+      get 'short_to_long'
+    end
+  end
   resources :categories
   resources :users
   resources :sessions
@@ -12,5 +16,4 @@ Rails.application.routes.draw do
 
   get '/auth/facebook/callback' => 'sessions#create'
 
-  get '/activities/short_to_long', to: "activities#short_to_long"
 end

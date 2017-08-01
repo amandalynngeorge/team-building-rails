@@ -2,6 +2,10 @@ class ActivitiesController < ApplicationController
   before_action :find_activity, only: [:show, :edit, :update, :destroy]
   before_action :require_login
 
+  def short_to_long
+    @activities = Activity.short_to_long
+  end
+
   def new
     @activity = Activity.new
     @activity.topics.build
@@ -34,9 +38,6 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  def short_to_long
-    @activities = Activity.short_to_long
-  end
 
   def destroy
     @activity.destroy
