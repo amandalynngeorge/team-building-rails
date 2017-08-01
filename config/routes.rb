@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   resources :topics
   resources :categories do
-    resources :activities do
-      collection do
-        get 'short_to_long'
-      end
+    resources :activities
+  end
+  resources :activities do
+    collection do
+      get 'short_to_long'
     end
   end
-  resources :activities
   resources :users
   resources :sessions
 

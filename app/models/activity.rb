@@ -13,7 +13,11 @@ class Activity < ApplicationRecord
 
   def topics_attributes=(topics_attributes)
     topics_attributes.each do |i, topic_attributes|
-      self.topics.build(topic_attributes)
+      if topic = Topic.find_by(name: topic_attributes[:name])
+        self.topics << topic
+      else
+        self.topics.build(topic_attributes)
+      end
     end
   end
 
