@@ -34,8 +34,8 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  def order
-    @activities = Activities.all.short_to_long
+  def short_to_long
+    @activities = Activity.short_to_long
   end
 
   def destroy

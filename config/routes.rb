@@ -12,5 +12,5 @@ Rails.application.routes.draw do
 
   get '/auth/facebook/callback' => 'sessions#create'
 
-  get '/activities/order', to: "activities#order"
+  get '/activities/short_to_long', to: "activities#short_to_long"
 end
