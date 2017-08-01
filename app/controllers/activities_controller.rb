@@ -21,7 +21,11 @@ class ActivitiesController < ApplicationController
   end
 
   def index
-    @activities = Activity.all.alpha
+    if @category = Category.find_by(id: params[:category_id])
+      @activities = @category.activities.alpha
+    else
+      @activities = Activity.alpha
+    end
   end
 
   def show

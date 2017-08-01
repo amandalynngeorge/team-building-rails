@@ -4,5 +4,5 @@
   <%= render partial: 'form', locals: {activity: @activity} %>
 <% else %>
   <h3>Sorry, you can only edit your own activities.</h3>
-  <%= link_to "Back to activities", activities_path %>
+  <%= link_to "Back to activities", category_activities_path %>
 <% end %>

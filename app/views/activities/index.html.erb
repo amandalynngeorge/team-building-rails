@@ -1,7 +1,7 @@
 <h1>Activities</h1>
-<%= link_to "Shortest to Longest", short_to_long_activities_url %>
-<h3><%= link_to 'Create New Activity', new_activity_path %></h3>
+<%= link_to "Shortest to Longest", short_to_long_category_activities_path %>
+<h3><%= link_to 'Create New Activity', new_category_activity_path %></h3>
 
 <% @activities.each do |act| %>
-  <%= link_to act.title, activity_path(act) %><br>
+  <%= link_to act.title, category_activity_path(act) %><br>
 <% end %>
