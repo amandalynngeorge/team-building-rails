@@ -1,5 +1,5 @@
 <h1> <%=@category.name%></h1>
 
 <%@category.activities.each do |act| %>
-  <%= link_to act.title, category_activity_path(act)%>
+  <%= link_to act.title, category_activity_path(act)%><br>
 <%end%>
