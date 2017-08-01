@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @activities = @user.activities.alpha
   end
 
   def index
