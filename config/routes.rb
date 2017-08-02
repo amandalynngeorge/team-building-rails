@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :topics
+  resources :topics, only: [:new, :create, :index, :show]
   resources :categories do
     resources :activities
   end
@@ -8,8 +8,8 @@ Rails.application.routes.draw do
       get 'short_to_long'
     end
   end
-  resources :users
-  resources :sessions
+  resources :users, only: [:new, :create, :show, :index]
+  resources :sessions, [:new, :create, :home, :show, :destroy]
 
   get '/sign_in', to: "sessions#new"
   post '/sessions', to: "sessions#create"
