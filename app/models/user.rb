@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :categories, through: :activities
 
   validates :username, uniqueness: {message: "This username is taken"}
+  validates :username, length: {minimum: 6}
   validates :email, uniqueness: {message: "This email is taken"}
   validates :email, presence: true
 
