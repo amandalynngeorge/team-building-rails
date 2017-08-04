@@ -1,5 +1,5 @@
 <h1>Activities by Time</h1>
 
 <% @activities.each do |act| %>
-  <%= act.time %> min. - <%= link_to act.title, category_activity_path(act) %><br>
+  <%= act.time %> min. - <%= link_to act.title, activity_path(act) %><br>
 <% end %>
