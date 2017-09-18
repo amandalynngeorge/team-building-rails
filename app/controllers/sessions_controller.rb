@@ -24,6 +24,7 @@ class SessionsController < ApplicationController
   end
 
   def home
+    @activity = Activity.order("RANDOM()").first
   end
 
   def show

@@ -47,6 +47,8 @@ class ActivitiesController < ApplicationController
     redirect_to activities_path
   end
 
+
+
 private
   def find_activity
     @activity = Activity.find_by(id: params[:id])
