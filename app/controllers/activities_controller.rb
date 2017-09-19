@@ -33,7 +33,7 @@ class ActivitiesController < ApplicationController
 
   def activity_data
     @activity = Activity.find(params[:id])
-    render json: @activity.to_json
+    render json: @activity
   end
 
   def edit
