@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   root 'sessions#home', as: 'home'
   get '/auth/facebook/callback' => 'sessions#create'
 
-  get '/users/:id/body', to: 'activities#body'
+  get '/activities/:id/activity_data', to: 'activities#activity_data'
 
   get '/users/:id/activities/new', to: 'users#new_activity'
 end

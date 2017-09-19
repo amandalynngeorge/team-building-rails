@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :find_activity, only: [:edit, :update, :destroy]
+  before_action :find_activity, only: [:show, :edit, :update, :destroy]
   before_action :require_login
 
   def short_to_long
@@ -29,6 +29,9 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+  end
+
+  def activity_data
     @activity = Activity.find(params[:id])
     render json: @activity.to_json
   end
