@@ -3,5 +3,5 @@
 <h3><%= link_to 'Create New Activity', new_activity_path %></h3>
 
 <% @activities.each do |act| %>
-  <a id='link' href="/users/<%=@user.id%>/activities/<%=act.id%>"><%=act.title%></a><br>
+  <a id='link' href="/users/<%=@user.id%>/activities/<%=act.id%>"><%=act.title%><br>
 <%end%>

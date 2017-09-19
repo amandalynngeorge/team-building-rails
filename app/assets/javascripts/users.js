@@ -1,23 +1,26 @@
-$(document).ready(function() {
-  attachListeners();
-})
-
-function attachListeners() {
-  $("#link").on("click", function(event) {
-    event.preventDefault()
-    showActivity()
+  $(document).ready(function() {
+    attachListeners();
   })
 
-  $("#create").on("click", function(event){
+function attachListeners() {
+  $('#link').on("click", function() {
     event.preventDefault()
-    createForm()
+    alert("show activity")
   })
 }
 
 function showActivity() {
-  alert("show activity")
+  showActivity()
 }
 
 function createForm() {
   alert("create form")
 }
+
+
+
+
+$.get("#create").on("click", function(event){
+  event.preventDefault()
+  createForm()
+})
