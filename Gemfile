@@ -13,6 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
@@ -37,5 +38,7 @@ gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'active_model_serializers', '0.10.6'
 gem 'pry-nav'
+gem 'jquery'
+gem 'jquery-cdn'
 gem 'jquery-rails'
 gem "figaro"

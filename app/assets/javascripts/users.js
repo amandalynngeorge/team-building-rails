@@ -3,9 +3,16 @@
   })
 
 function attachListeners() {
-  $('#link').on("click", function() {
+  $('.link').on("click", function() {
     event.preventDefault()
-    alert("show activity")
+    alert("show this activity")
+  })
+
+
+
+  $("#create").on("click", function(event){
+    event.preventDefault()
+    createForm()
   })
 }
 
@@ -16,11 +23,3 @@ function showActivity() {
 function createForm() {
   alert("create form")
 }
-
-
-
-
-$.get("#create").on("click", function(event){
-  event.preventDefault()
-  createForm()
-})
