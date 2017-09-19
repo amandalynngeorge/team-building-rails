@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#create'
 
   get '/users/:id/body', to: 'activities#body'
+
+  get '/users/:id/activities/new', to: 'users#new_activity'
 end

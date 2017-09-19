@@ -1,6 +1,6 @@
 <h1> <%=@user.username%></h1>
 
-<h3><%= link_to 'Create New Activity', new_activity_path %></h3>
+<h3><a id="create_link" href="/users/<%=@user.id%>/activities/new">Create New Activity</a></h3>
 
 <% @activities.each do |act| %>
   <a class='link' href="/users/<%=@user.id%>/activities/<%=act.id%>"><%=act.title%><br>
