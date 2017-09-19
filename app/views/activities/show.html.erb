@@ -1,14 +1,33 @@
+<div class="title">
 <h1> <%=@activity.title%> </h1>
+</div>
+
+<div class="description">
 <h4>Description</h4>
 <%=@activity.description%>
+</div>
+
+<div class="goal">
 <h4>Goal</h4>
 <%=@activity.goal%>
+</div>
+
+<div class="rules">
 <h4>Rules</h4>
 <%=@activity.rules%>
+</div>
+
+<div class="time">
 <h4>Time Needed</h4>
 <%=@activity.time%> minutes
+</div>
+
+<div class="category">
 <h4>Category</h4>
 <%=@activity.category.name%>
+</div>
+
+<div class="topics">
 <h4>Topics</h4>
 <%@activity.topics.each do |top|%>
   <%=top.name%>
