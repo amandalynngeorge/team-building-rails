@@ -1,7 +1,7 @@
 $(function () {
   $(".js-next").on("click", function() {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    $.get("/activities/" + nextId + "/activity_data", function(data) {
+    $.get("/activities/" + nextId + ".json", function(data) {
       $(".title").text(data["title"]);
       $(".description").text(data["description"]);
       $(".goal").text(data["goal"]);

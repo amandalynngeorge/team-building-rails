@@ -2,12 +2,18 @@
 
 <a href="#" class="js-next" data-id='<%=@activity.id%>'>Next...</a>
 
-<p class="description"><strong>Description: </strong><%=@activity.description%></p>
-<p class="goal"><strong>Goal: </strong><%=@activity.goal%></p>
-<p class="rules"><strong>Rules: </strong><%=@activity.rules%></p>
-<p class="time"><strong>Time Needed: </strong><%=@activity.time%> minutes</p>
-<p class="category"><strong>Category: </strong><%=@activity.category.name%></p>
-<p class="topics"><strong>Topics: </strong></p>
+<h4>Description: </h4>
+<p class="description"><%=@activity.description%></p>
+<h4>Goal: </h4>
+<p class="goal"><%=@activity.goal%></p>
+<h4>Rules: </h4>
+<p class="rules"><%=@activity.rules%></p>
+<h4>Time Needed:</h4>
+<p class="time"><%=@activity.time%> minutes</p>
+<h4>Category:</h4>
+<p class="category"><%=@activity.category.name%></p>
+<h4>Topics:</h4>
+<p class="topics"></p>
 <%@activity.topics.each do |top|%>
   <%=top.name%>
 <%end%>
