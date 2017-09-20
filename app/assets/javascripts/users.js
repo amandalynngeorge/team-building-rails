@@ -1,23 +1,19 @@
-  $(document).ready(function() {
-    attachListeners();
-  })
-
-function attachListeners() {
+$(document).ready(function() {
   $('.link').on("click", function() {
-    event.preventDefault()
     showActivity()
   })
 
   $("#create_link").on("click", function(event){
-    event.preventDefault()
     createForm()
   })
+
+})
+
+function createForm() {
+  event.preventDefault()
+  alert("create form")
 }
 
 function showActivity() {
-  alert("show activity")
-}
-
-function createForm() {
-  alert("create form")
+  event.preventDefault()
 }
