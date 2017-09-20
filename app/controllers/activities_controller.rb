@@ -31,7 +31,8 @@ class ActivitiesController < ApplicationController
   def show
     respond_to do |f|
       f.html {render :show}
-      f.json {render json: @activity.to_json(only: [:title, :description, :goal, :rules, :time], include: [category: {only: [:name]}])}
+      f.json {render json: @activity}
+      # .to_json(only: [:title, :description, :goal, :rules, :time], include: [category: {only: [:name]}])
     end
   end
 

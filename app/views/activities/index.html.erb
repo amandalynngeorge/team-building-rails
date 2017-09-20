@@ -4,5 +4,5 @@
 <h3><%= link_to 'Create New Activity', new_activity_path %></h3>
 
 <% @activities.each do |act| %>
-  <a class="activity_show" href='/activities/<%=act.id%>.json'><%=act.title%></a><br>
+  <a class="activity_show" href='/activities/<%=act.id%>'><%=act.title%></a><br>
 <% end %>

@@ -11,6 +11,10 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find_by(id: params[:id])
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @topic}
+    end
   end
 
   def create
