@@ -2,33 +2,19 @@
 <h1> <%=@activity.title%> </h1>
 </div>
 
-<div class="description">
-<h4>Description</h4>
-<%=@activity.description%>
-</div>
+<a href="#" class="js-next" data-id='<%=@activity.id%>'>Next...</a>
 
-<div class="goal">
-<h4>Goal</h4>
-<%=@activity.goal%>
-</div>
+<p class="description"><strong>Description: </strong><%=@activity.description%></p>
 
-<div class="rules">
-<h4>Rules</h4>
-<%=@activity.rules%>
-</div>
+<p class="goal"><strong>Goal: </strong><%=@activity.goal%></p>
 
-<div class="time">
-<h4>Time Needed</h4>
-<%=@activity.time%> minutes
-</div>
+<p class="rules"><strong>Rules: </strong><%=@activity.rules%></p>
 
-<div class="category">
-<h4>Category</h4>
-<%=@activity.category.name%>
-</div>
+<p class="time"><strong>Time Needed: </strong><%=@activity.time%> minutes</p>
 
-<div class="topics">
-<h4>Topics</h4>
+<p class="category"><strong>Category: </strong><%=@activity.category.name%></p>
+
+<p class="topics"><strong>Topics: </strong></p>
 <%@activity.topics.each do |top|%>
   <%=top.name%>
 <%end%>
@@ -39,3 +25,22 @@
   <%= link_to "Edit Activity", edit_activity_path %>
   <%= link_to "Delete Activity", activity_path(@activity), method: :delete %>
 <%end%>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-next").on("click", function() {
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    $.get("/activities/" + nextId + "/activity_data", function(data) {
+      $(".title").text(data["title"]);
+      $(".description").text(data["description"]);
+      $(".goal").text(data["goal"]);
+      $(".rules").text(data["rules"]);
+      $(".time").text(data["time"]);
+      $(".category").text(data["category"]["name"]);
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", data["id"]);
+    });
+  });
+});
+
+</script>

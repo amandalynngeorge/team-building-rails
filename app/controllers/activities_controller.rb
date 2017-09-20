@@ -29,11 +29,17 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @activity.to_json(only: [:title, :description, :goal, :rules, :time], include: [category: {only: [:name]}])}
+    end
   end
 
   def activity_data
     @activity = Activity.find(params[:id])
-    render json: @activity
+# MISSING TOPICS INCLUDED IN JSON RENDER
+    # render json: @activity.to_json(only: [:title, :description, :goal, :rules, :time], include: [category: {only: [:name]}])
+    render json: ActivitySerializer.serialize(@activity)
   end
 
   def edit
