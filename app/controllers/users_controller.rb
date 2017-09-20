@@ -20,10 +20,10 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @activity = @user.activities.first
     @activities = @user.activities.alpha
-    # respond_to do |f|
-    #   f.html {render :show}
-    #   f.json {render json: @user}
-    # end
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @user}
+    end
   end
 
   def index
