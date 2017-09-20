@@ -1,46 +1,19 @@
-<div class="title">
-<h1> <%=@activity.title%> </h1>
-</div>
+<h1 class="title"> <%=@activity.title%> </h1>
 
 <a href="#" class="js-next" data-id='<%=@activity.id%>'>Next...</a>
 
 <p class="description"><strong>Description: </strong><%=@activity.description%></p>
-
 <p class="goal"><strong>Goal: </strong><%=@activity.goal%></p>
-
 <p class="rules"><strong>Rules: </strong><%=@activity.rules%></p>
-
 <p class="time"><strong>Time Needed: </strong><%=@activity.time%> minutes</p>
-
 <p class="category"><strong>Category: </strong><%=@activity.category.name%></p>
-
 <p class="topics"><strong>Topics: </strong></p>
 <%@activity.topics.each do |top|%>
   <%=top.name%>
 <%end%>
 <br><br>
 
-
 <%if current_user == @activity.user %>
   <%= link_to "Edit Activity", edit_activity_path %>
   <%= link_to "Delete Activity", activity_path(@activity), method: :delete %>
 <%end%>
-
-<script type="text/javascript" charset="utf-8">
-$(function () {
-  $(".js-next").on("click", function() {
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    $.get("/activities/" + nextId + "/activity_data", function(data) {
-      $(".title").text(data["title"]);
-      $(".description").text(data["description"]);
-      $(".goal").text(data["goal"]);
-      $(".rules").text(data["rules"]);
-      $(".time").text(data["time"]);
-      $(".category").text(data["category"]["name"]);
-      // re-set the id to current on the link
-      $(".js-next").attr("data-id", data["id"]);
-    });
-  });
-});
-
-</script>
