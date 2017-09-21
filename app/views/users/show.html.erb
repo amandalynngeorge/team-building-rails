@@ -1,6 +1,6 @@
 <h4><a id="create_link" href="/users/<%=@user.id%>/activities/new">Create New Activity</a></h4>
 
-<div class="user_new_form"
+<div class="user_new_activity_form">
 <%= form_for @activity do |f| %>
   <%= f.label "Title (required)" %><br>
   <%= f.text_field :title %> <br>

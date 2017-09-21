@@ -1,9 +1,10 @@
 $(document).ready(function() {
-  $(".user_new_form").hide()
-  // $(".showActivity").hide()
+  $(".user_new_activity_form").hide()
+  $(".showActivity").hide()
 
   $('.link').on("click", function() {
     event.preventDefault()
+    $(".showActivity").toggle()
     var activityId = parseInt($(this).attr("data-id"));
     var userId = parseInt($("#username").attr("data-id"));
     $.get("/users/" + userId + "/activities/" + activityId + ".json", function(data) {
@@ -28,5 +29,5 @@ $(document).ready(function() {
 
 function createForm() {
   event.preventDefault()
-  $("form").toggle();
+  $(".user_new_activity_form").toggle();
 }
