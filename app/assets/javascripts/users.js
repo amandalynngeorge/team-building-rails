@@ -1,10 +1,11 @@
 $(document).ready(function() {
+
   $(".user_new_activity_form").hide()
   $(".showActivity").hide()
 
   $('.link').on("click", function() {
     event.preventDefault()
-    $(".showActivity").toggle()
+    $(".showActivity").show()
     var activityId = parseInt($(this).attr("data-id"));
     var userId = parseInt($("#username").attr("data-id"));
     $.get("/users/" + userId + "/activities/" + activityId + ".json", function(data) {
@@ -18,16 +19,23 @@ $(document).ready(function() {
   })
 
   $("#create_link").on("click", function(event){
-    createForm()
+    event.preventDefault()
+    $(".user_new_activity_form").toggle();
   })
 
-  $(".submit").on("click", function(event) {
+  $("#btnsubmit").on("click", function(event) {
     event.preventDefault()
+    // $.post($(this).attr('action', $(this).serialize(), function(response) {
+    //   var activityId = parseInt($(this).attr('data-id'))
+    //   $.get("/users/" + userId + "/activities/" + activityId + ".json", function(data) {
+    //     $(".title").text(data["title"]);
+    //     $(".description").text(data["description"]);
+    //     $(".goal").text(data["goal"]);
+    //     $(".rules").text(data["rules"]);
+    //     $(".time").text(data["time"]);
+    //     $(".category").text(data["category"]["name"]);
+    // }, 'json')
+    // $('form :input').attr('value', '')
   })
 
 })
-
-function createForm() {
-  event.preventDefault()
-  $(".user_new_activity_form").toggle();
-}
