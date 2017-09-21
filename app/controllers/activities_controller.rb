@@ -7,6 +7,7 @@ class ActivitiesController < ApplicationController
   end
 
   def new
+    raise stop.inspect
     @activity = Activity.new
     @activity.topics.build
   end

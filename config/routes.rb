@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :index] do
     resources :activities
   end
+  get '/users/activities/new', to: "activities#new"
 
   resources :sessions
   resources :categories do
-    resources :activities
+    resources :activities, only: [:show, :index]
   end
   resources :activities do
     collection do

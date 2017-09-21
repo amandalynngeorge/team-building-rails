@@ -25,6 +25,12 @@ $(document).ready(function() {
 
   $("#btnsubmit").on("click", function(event) {
     event.preventDefault()
+    var url = $(this).data["url"]
+    console.log(url)
+    $.get(url), function(response) {
+      console.log(response)
+    }
+  })
     // $.post($(this).attr('action', $(this).serialize(), function(response) {
     //   var activityId = parseInt($(this).attr('data-id'))
     //   $.get("/users/" + userId + "/activities/" + activityId + ".json", function(data) {
@@ -36,6 +42,6 @@ $(document).ready(function() {
     //     $(".category").text(data["category"]["name"]);
     // }, 'json')
     // $('form :input').attr('value', '')
-  })
 
+//close doc.ready
 })
