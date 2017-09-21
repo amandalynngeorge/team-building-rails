@@ -18,7 +18,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+
+    # @activity = Activity.find_by(id: params[:id])
     @activity = @user.activities.first
+    @nextId = Activity.all[Activity.all.find_index(@activity) + 1].id
+
     @activities = @user.activities.alpha
     respond_to do |f|
       f.html {render :show}
