@@ -6,9 +6,28 @@
 <a class='link' data-id="<%=act.id%>" href="/users/<%=@user.id%>/activities/<%=act.id%>"><%=act.title%></a><br>
   <%end%>
 
+<div class="showActivity">
+  <h3 class="title"> <%=@activity.title%> </h3>
+  <h5>Description: </h5>
+  <p class="description"><%=@activity.description%></p>
+  <h5>Goal: </h5>
+  <p class="goal"><%=@activity.goal%></p>
+  <h5>Rules: </h5>
+  <p class="rules"><%=@activity.rules%></p>
+  <h5>Time Needed:</h5>
+  <p class="time"><%=@activity.time%> minutes</p>
+  <h5>Category:</h5>
+  <p class="category"><%=@activity.category.name%></p>
+  <h5>Topics:</h5>
+  <p class="topics"></p>
+  <%@activity.topics.each do |top|%>
+  <%=top.name%>
+  <%end%>
+  <br><br>
 
-<%if current_user == @activity.user %>
-<%= link_to "Edit Activity", edit_activity_path %>
-<%= link_to "Delete Activity", activity_path(@activity), method: :delete %>
-<%end%>
+
+  <%if current_user == @activity.user %>
+  <%= link_to "Edit Activity", edit_activity_path %>
+  <%= link_to "Delete Activity", activity_path(@activity), method: :delete %>
+  <%end%>
 </div>
