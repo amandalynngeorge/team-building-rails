@@ -1,52 +1,10 @@
 <h4><a id="create_link" href="/users/<%=@user.id%>/activities/new">Create New Activity</a></h4>
 
-<div class="user_new_activity_form">
-<%= form_for @activity do |f| %>
-  <%= f.label "Title (required)" %><br>
-  <%= f.text_field :title %> <br>
-  <%= f.label "Description (required)" %><br>
-  <%= f.text_area :description %><br>
-  <%= f.label :goal %><br>
-  <%= f.text_field :goal %><br>
-  <%= f.label :rules %><br>
-  <%= f.text_area :rules %><br>
-  <%= f.label "Time (required)" %><br>
-  <%= f.number_field :time %><br>
-  <%= f.label "Category (required)" %><br>
-  <%= f.collection_select :category_id, Category.all, :id, :name %><br>
-  <%= f.fields_for :topics do |field|%>
-    <%= field.label "Topic" %><br>
-    <%= field.text_field :name %><br>
-  <%end%>
-  <br>
-  <button id="btnsubmit" data-url="/users/activities/new">Submit</button>
-<%end%>
-</div>
 
 <h2 class="username" data-id="<%=@user.id%>"> <%=@user.username%>'s Activities:</h2>
 <% @activities.each do |act| %>
 <a class='link' data-id="<%=act.id%>" href="/users/<%=@user.id%>/activities/<%=act.id%>"><%=act.title%></a><br>
   <%end%>
-
-<div class="showActivity">
-<h3 class="title"> <%=@activity.title%> </h3>
-<h5>Description: </h5>
-<p class="description"><%=@activity.description%></p>
-<h5>Goal: </h5>
-<p class="goal"><%=@activity.goal%></p>
-<h5>Rules: </h5>
-<p class="rules"><%=@activity.rules%></p>
-<h5>Time Needed:</h5>
-<p class="time"><%=@activity.time%> minutes</p>
-<h5>Category:</h5>
-<p class="category"><%=@activity.category.name%></p>
-<h5>Topics:</h5>
-<p class="topics"></p>
-<%@activity.topics.each do |top|%>
-<%=top.name%>
-<%end%>
-<br><br>
-
 
 
 <%if current_user == @activity.user %>

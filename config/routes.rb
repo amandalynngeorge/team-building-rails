@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :sessions
   resources :categories do
-    resources :activities, only: [:show, :index]
+    resources :activities
   end
   resources :activities do
     collection do

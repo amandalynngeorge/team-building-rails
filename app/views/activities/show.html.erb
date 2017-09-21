@@ -1,6 +1,7 @@
 <h1 class="title"> <%=@activity.title%> </h1>
 
 <a href="#" class="js-next" data-id='<%=@activity.id%>'>Next...</a>
+<input class="nextId" type="hidden" data-id="<%=@nextId%>"></input>
 
 <h4>Description: </h4>
 <p class="description"><%=@activity.description%></p>
