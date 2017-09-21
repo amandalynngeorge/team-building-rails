@@ -7,7 +7,6 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    # raise stop.inspect
     @activity = Activity.new
     @activity.topics.build
   end
@@ -31,19 +30,19 @@ class ActivitiesController < ApplicationController
 
   def show
     # @nextId = Activity.all[Activity.all.find_index(@activity) + 1].id
-    # respond_to do |f|
-    #   f.html {render :show}
-    #   f.json {render json: @activity}
-    #   # .to_json(only: [:title, :description, :goal, :rules, :time], include: [category: {only: [:name]}])
-    # end
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @activity}
+      # .to_json(only: [:title, :description, :goal, :rules, :time], include: [category: {only: [:name]}])
+    end
   end
 
-#   def activity_data
-#     @activity = Activity.find(params[:id])
-# # MISSING TOPICS INCLUDED IN JSON RENDER
-#     # render json: @activity.to_json(only: [:title, :description, :goal, :rules, :time], include: [category: {only: [:name]}])
-#     render json: ActivitySerializer.serialize(@activity)
-#   end
+  def activity_data
+    @activity = Activity.find(params[:id])
+# MISSING TOPICS INCLUDED IN JSON RENDER
+    # render json: @activity.to_json(only: [:title, :description, :goal, :rules, :time], include: [category: {only: [:name]}])
+    render json: ActivitySerializer.serialize(@activity)
+  end
 
   def edit
   end

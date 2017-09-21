@@ -20,16 +20,17 @@ $(document).ready(function() {
 
   $("#create_link").on("click", function(event){
     event.preventDefault()
-    $(".user_new_activity_form").toggle();
+    $(".activityForm").toggle();
   })
 
-  $("#btnsubmit").on("click", function(event) {
+  $(".submit").on("click", function(event) {
     event.preventDefault()
-    var url = $(this).data["url"]
-    console.log(url)
-    $.get(url), function(response) {
-      console.log(response)
-    }
+    alert("submit")
+    // var url = $(this).data["url"]
+    // console.log(url)
+    // $.get(url), function(response) {
+    //   console.log(response)
+    // }
   })
     // $.post($(this).attr('action', $(this).serialize(), function(response) {
     //   var activityId = parseInt($(this).attr('data-id'))
