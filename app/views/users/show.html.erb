@@ -1,5 +1,27 @@
 <h4><a id="create_link" href="/users/<%=@user.id%>/activities/new">Create New Activity</a></h4>
 
+<div class="activityForm">
+<%= form_for @activity do |f| %>
+  <%= f.label "Title (required)" %><br>
+  <%= f.text_field :title %> <br>
+  <%= f.label "Description (required)" %><br>
+  <%= f.text_area :description %><br>
+  <%= f.label :goal %><br>
+  <%= f.text_field :goal %><br>
+  <%= f.label :rules %><br>
+  <%= f.text_area :rules %><br>
+  <%= f.label "Time (required)" %><br>
+  <%= f.number_field :time %><br>
+  <%= f.label "Category (required)" %><br>
+  <%= f.collection_select :category_id, Category.all, :id, :name %><br>
+  <%= f.fields_for :topics do |field|%>
+    <%= field.label "Topic" %><br>
+    <%= field.text_field :name %><br>
+  <%end%>
+  <br>
+  <%= submit_tag "Submit"%>
+<%end%>
+</div>
 
 <h2 class="username" data-id="<%=@user.id%>"> <%=@user.username%>'s Activities:</h2>
 <% @activities.each do |act| %>

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $(".user_new_activity_form").hide()
+  $(".activityForm").hide()
   $(".showActivity").hide()
 
   $('.link').on("click", function() {
