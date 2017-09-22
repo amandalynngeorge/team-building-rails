@@ -27,10 +27,8 @@ $(document).ready(function() {
     var activity = $("form").serialize()
     var activities = $.post("/activities", activity, null, "json").done(function(data) {
       newActivity = new Activity(data.id, data.title, data.description, data.goal, data.rules, data.time, data.category_id, data.topics_attributes )
-      newActivity.formatShow()
-      fetch(`/users/${data.user.id}.json`).then(res => res.json()).then(newActivity => {
-        $('#activity_list').append(activityHtml)
-      })
+      var activityHtml = newActivity.formatShowLink()
+      $('#activity_list').append(activityHtml)
     }).fail(function(data){
       debugger
     })
@@ -48,7 +46,7 @@ function Activity(id, title, description, goal, rules, time, category_id, topics
   this.topics_attributes = topics_attributes
 }
 
-Activity.prototype.formatShow = function() {
+Activity.prototype.formatShowLink = function() {
   var userId = parseInt($("#username").attr("data-id"));
   var activityHtml = `
   <li><a class='link' data-id="${this.id}" href="/users/${userId}/activities/${this.id}">${this.title}</a><br></li>
