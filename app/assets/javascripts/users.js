@@ -29,6 +29,10 @@ $(document).ready(function() {
       newActivity = new Activity(data.id, data.title, data.description, data.goal, data.rules, data.time, data.category_id, data.topics_attributes )
       var activityHtml = newActivity.formatShowLink()
       $('#activity_list').append(activityHtml)
+      $('.showActivity').html("")
+      var activityShowHtml = newActivity.formatShow()
+      $('.showActivity').html(activityShowHtml)
+      $('.showActivity').show()
     }).fail(function(data){
       debugger
     })
@@ -52,4 +56,24 @@ Activity.prototype.formatShowLink = function() {
   <li><a class='link' data-id="${this.id}" href="/users/${userId}/activities/${this.id}">${this.title}</a><br></li>
   `
   return activityHtml
+}
+
+Activity.prototype.formatShow = function() {
+  var activityShowHtml = `
+  <h3 class="title"> ${this.title} </h3>
+  <h5>Description: </h5>
+  <p class="description">${this.description}</p>
+  <h5>Goal: </h5>
+  <p class="goal">${this.goal}</p>
+  <h5>Rules: </h5>
+  <p class="rules">${this.rules}</p>
+  <h5>Time Needed:</h5>
+  <p class="time">${this.time} minutes</p>
+  <h5>Category:</h5>
+  <p class="category">${this.category.id}</p>
+  <h5>Topics:</h5>
+  <p class="topics">${this.topic.name}</p>
+  <br><br>
+  `
+  return activityShowHtml
 }
