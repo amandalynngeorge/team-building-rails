@@ -14,7 +14,11 @@ class ActivitiesController < ApplicationController
   def create
     @activity = current_user.activities.build(activity_params)
     if @activity.save
-      redirect_to activity_path(@activity)
+      respond_to do |f|
+        f.html {redirect_to activity_path(@activity)}
+        f.json {render json: @activity}
+      end
+
     else
       render 'new'
     end

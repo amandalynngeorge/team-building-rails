@@ -18,7 +18,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-
+    @new_activity = Activity.new
+    @new_activity.topics.build
     # @activity = Activity.find_by(id: params[:id])
     @activity = @user.activities.first
     # @nextId = Activity.all[Activity.all.find_index(@activity) + 1].id

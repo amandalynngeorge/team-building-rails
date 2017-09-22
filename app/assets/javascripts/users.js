@@ -22,34 +22,15 @@ $(document).ready(function() {
     });
   })
 
-    // $(".submit").on("click", function(event) {
-    //   event.preventDefault()
-    //   $.ajax({
-    //     url: '/activities',
-    //     method: 'POST',
-    //     data: $(this).serialize(),
-    //     success: function(data) {
-    //       $('#acitivity_list').append(`<li>${data.content}</li>`)
-    //       console.log(data)
-    //     }
-    //   })
-    // })
-
-  //
-  // $('.submit').on("click", function(event) {
-  //   event.preventDefault()
-  //   var activity = $("form").serialize()
-  //   var activities = $.post("/activities", values)
-  //   //on submit:
-  //     //create resource with JS model object
-  //     //render response:
-  //       //title added to list as link
-  //       //full details available when link clicked on
-  //   console.log(activity)
-  //   console.log(acitivities)
-  // })
-  //
-
+  $('.submit').on("click", function(event) {
+    event.preventDefault()
+    var activity = $("form").serialize()
+    var activities = $.post("/activities", activity, null, "json").done(function(data) {
+      
+    }).fail(function(data){
+      debugger
+    })
+  })
 })
 
 function Activity(id, title, description, goal, rules, time, category_id, topics_attributes) {
@@ -64,6 +45,7 @@ function Activity(id, title, description, goal, rules, time, category_id, topics
 }
 
 Activity.prototype.formatIndex = function() {
+  $("#activity_list").append(`<li><a class='link' data-id="${data.id}" href="/users/${data.user.id}/activities/${data.id}">${data.title}</a><br></li>`)
   let activityHtml = `
   <h3>${this.title}</h3>
   `
