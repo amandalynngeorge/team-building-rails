@@ -1,32 +1,47 @@
 $(document).ready(function() {
-  // $(".activityForm").hide()
-  // $(".showActivity").hide()
-  //
-  // $("#create_link").on("click", function(event){
-  //   event.preventDefault()
-  //   $(".activityForm").toggle();
-  // })
+  $(".activityForm").hide()
+  $(".showActivity").hide()
 
-  bindClickHandlers()
+  $("#create_link").on("click", function(event){
+    event.preventDefault()
+    $(".activityForm").toggle();
+  })
+
+  $('.link').on("click", function() {
+    event.preventDefault()
+    $(".showActivity").show()
+    var activityId = parseInt($(this).attr("data-id"));
+    var userId = parseInt($("#username").attr("data-id"));
+    $.get("/users/" + userId + "/activities/" + activityId + ".json", function(data) {
+      $(".title").text(data["title"]);
+      $(".description").text(data["description"]);
+      $(".goal").text(data["goal"]);
+      $(".rules").text(data["rules"]);
+      $(".time").text(data["time"]);
+      $(".category").text(data["category"]["name"]);
+    });
+  })
 })
 
-const bindClickHandlers = () => {
-  $(".username_activities").on("click", (e) => {
-    e.preventDefault()
-    var userId = parseInt($("#username").attr("data-id"));
-    fetch(`/users/${userId}/activities.json`)
-      .then(res => res.json())
-      .then(data => {
-        $("#activity_id").html("")
-        activities.forEach((activity) => {
-          let newActivity = new Activity(activity)
-          let activityHtml = newActivity.formatIndex()
-          $('#username_activities').append(activityHtml)
-          console.log(newActivity)
-        })
-      })
-  })
-}
+
+//
+// const bindClickHandlers = () => {
+//   $(".username_activities").on("click", (e) => {
+//     e.preventDefault()
+//     var userId = parseInt($("#username").attr("data-id"));
+//     fetch(`/users/${userId}/activities.json`)
+//       .then(res => res.json())
+//       .then(data => {
+//         $("#activity_id").html("")
+//         activities.forEach((activity) => {
+//           let newActivity = new Activity(activity)
+//           let activityHtml = newActivity.formatIndex()
+//           $('#username_activities').append(activityHtml)
+//           console.log(newActivity)
+//         })
+//       })
+//   })
+// }
 
 function Activity(id, title, description, goal, rules, time, category_id, topics_attributes) {
   activity.id = id
@@ -47,22 +62,7 @@ Activity.prototype.formatIndex = function() {
 }
 
 //
-//   $('.link').on("click", function() {
-//     event.preventDefault()
-//     $(".showActivity").show()
-//     var activityId = parseInt($(this).attr("data-id"));
-//     var userId = parseInt($("#username").attr("data-id"));
-//     $.get("/users/" + userId + "/activities/" + activityId + ".json", function(data) {
-//       $(".title").text(data["title"]);
-//       $(".description").text(data["description"]);
-//       $(".goal").text(data["goal"]);
-//       $(".rules").text(data["rules"]);
-//       $(".time").text(data["time"]);
-//       $(".category").text(data["category"]["name"]);
-//     });
-//   })
-//
-//
+
 //   $(".submit").on("click", function(event) {
 //     event.preventDefault()
 //     $.ajax({
