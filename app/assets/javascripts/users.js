@@ -26,7 +26,11 @@ $(document).ready(function() {
     event.preventDefault()
     var activity = $("form").serialize()
     var activities = $.post("/activities", activity, null, "json").done(function(data) {
-      
+      newActivity = new Activity(data.id, data.title, data.description, data.goal, data.rules, data.time, data.category_id, data.topics_attributes )
+      newActivity.formatShow()
+      fetch(`/users/${data.user.id}.json`).then(res => res.json()).then(newActivity => {
+        $('#activity_list').append(activityHtml)
+      })
     }).fail(function(data){
       debugger
     })
@@ -34,20 +38,20 @@ $(document).ready(function() {
 })
 
 function Activity(id, title, description, goal, rules, time, category_id, topics_attributes) {
-  activity.id = id
-  activity.title = title
-  activity.description = description
-  activity.goal = goal
-  activity.rules = rules
-  activity.time = time
-  activity.category_id = category_id
-  activity.topics_attributes = topics_attributes
+  this.id = id
+  this.title = title
+  this.description = description
+  this.goal = goal
+  this.rules = rules
+  this.time = time
+  this.category_id = category_id
+  this.topics_attributes = topics_attributes
 }
 
-Activity.prototype.formatIndex = function() {
-  $("#activity_list").append(`<li><a class='link' data-id="${data.id}" href="/users/${data.user.id}/activities/${data.id}">${data.title}</a><br></li>`)
-  let activityHtml = `
-  <h3>${this.title}</h3>
+Activity.prototype.formatShow = function() {
+  var userId = parseInt($("#username").attr("data-id"));
+  var activityHtml = `
+  <li><a class='link' data-id="${this.id}" href="/users/${userId}/activities/${this.id}">${this.title}</a><br></li>
   `
   return activityHtml
 }

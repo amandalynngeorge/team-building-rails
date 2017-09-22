@@ -21,7 +21,11 @@ class UsersController < ApplicationController
     @new_activity = Activity.new
     @new_activity.topics.build
     # @activity = Activity.find_by(id: params[:id])
-    @activity = @user.activities.first
+    if @user.activities.first
+      @activity = @user.activities.first
+    else
+      @activity = Activity.all.first
+    end
     # @nextId = Activity.all[Activity.all.find_index(@activity) + 1].id
 
     @activities = @user.activities.alpha
