@@ -8,13 +8,10 @@ $(function () {
       $(".rules").text(data["rules"]);
       $(".time").text(data["time"]);
       $(".category").text(data["category"]["name"]);
-      // debugger
       $('.topic-div').html('')
       data.topics.forEach(function(topic) {
         $('.topic-div').append(topic.name + "<br>")
       })
-
-
       $(".js-next").attr("data-id", data["id"]);
     });
   });
