@@ -29,10 +29,10 @@ $(document).ready(function() {
       newActivity = new Activity(data.id, data.title, data.description, data.goal, data.rules, data.time, data.category_id, data.topics_attributes )
       var activityHtml = newActivity.formatShowLink()
       $('#activity_list').append(activityHtml)
-      $('.showActivity').html("")
-      var activityShowHtml = newActivity.formatShow()
-      $('.showActivity').html(activityShowHtml)
-      $('.showActivity').show()
+      // $('.showActivity').html("")
+      // var activityShowHtml = newActivity.formatShow()
+      // $('.showActivity').html(activityShowHtml)
+      // $('.showActivity').show()
     }).fail(function(data){
       debugger
     })

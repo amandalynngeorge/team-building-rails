@@ -24,7 +24,7 @@
 </div>
 
 
-<a href="#" class="username_activities" data-id="<%=@user.id%>"> <%=@user.username%>'s Activities</a><br><br>
+<h3 class="username_activities" data-id="<%=@user.id%>"> <%=@user.username%>'s Activities</h3><br>
 <ul id="activity_list">
 <% @activities.each do |act| %>
 <li><a class='link' data-id="<%=act.id%>" href="/users/<%=@user.id%>/activities/<%=act.id%>"><%=act.title%></a><br></li>
