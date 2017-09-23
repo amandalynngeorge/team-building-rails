@@ -15,9 +15,11 @@
 <p class="category"><%=@activity.category.name%></p>
 <h4>Topics:</h4>
 <p class="topics"></p>
+<div class="topic-div">
 <%@activity.topics.each do |top|%>
   <%=top.name%>
 <%end%>
+</div>
 <br><br>
 
 <%if current_user == @activity.user %>

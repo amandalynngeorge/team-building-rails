@@ -7,7 +7,7 @@ $(document).ready(function() {
     $(".activityForm").toggle();
   })
 
-  $('.link').on("click", function() {
+  $('#activity_list').on("click", '.link', function() {
     event.preventDefault()
     $(".showActivity").show()
     var activityId = parseInt($(this).attr("data-id"));
@@ -19,6 +19,11 @@ $(document).ready(function() {
       $(".rules").text(data["rules"]);
       $(".time").text(data["time"]);
       $(".category").text(data["category"]["name"]);
+      //Topics
+      $('.topic-div').html('')
+      data.topics.forEach(function(topic) {
+        $('.topic-div').append(topic.name + "<br>")
+      })
     });
   })
 

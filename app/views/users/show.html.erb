@@ -45,9 +45,11 @@
   <p class="category"><%=@activity.category.name%></p>
   <h5>Topics:</h5>
   <p class="topics"></p>
+  <div class="topic-div">
   <%@activity.topics.each do |top|%>
   <%=top.name%>
   <%end%>
+</div>
   <br><br>
 
 
