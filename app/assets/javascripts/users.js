@@ -7,6 +7,17 @@ $(document).ready(function() {
     $(".activityForm").toggle();
   })
 
+  $('#activity_list').on("load", function() {
+    var userId = parseInt($("#username").attr("data-id"));
+    $.get('/users/' + userId + ".json", function(data) {
+    $("#activity_list").html('')
+    data.activities.forEach(function(activity) {
+      $("#activity_list").append(`<li><a class='link' data-id="${activity.id}" href="/users/${user.id}/activities/${activity.id}">${activity.title}</a><br></li>`)
+    })
+    })
+  })
+
+
   $('#activity_list').on("click", '.link', function() {
     event.preventDefault()
     $(".showActivity").show()
