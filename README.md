@@ -1,6 +1,6 @@
 # README
 
-Team Building Rails is an account-based application to log and manage your collection of team building activities. A collection of activities from all users is available to all. Team building activities are organized into the 5 categories provided, but users are able to add topic tags to their activities.  
+Team Building Rails is an account-based application to log and manage your collection of team building activities. A collection of activities from all users is available to all. Team building activities are organized into the 5 categories provided, but users are able to add topic tags to their activities. 
 
 * Installation Steps:
 Fork and clone application.
