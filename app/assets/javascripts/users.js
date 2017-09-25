@@ -12,8 +12,22 @@ $(document).ready(function() {
     var userId = parseInt($(".username_activities").attr("data-id"));
     $.get('/users/' + userId + "/activities.json", function(data) {
       $("#activity_list").html('')
-      var list = data.forEach(function(activity) {
-        $("#activity_list").append(`<li><a class='link' data-id="${activity.id}" href="/users/${userId}/activities/${activity.id}">${activity.title}</a><br></li>`)
+      data.sort(function(a, b) {
+        return a.time - b.time;
+      }).forEach(function(activity) {
+        $("#activity_list").append(
+          `
+          <li>
+            <a
+              class='link'
+              data-id="${activity.id}"
+              href="/users/${userId}/activities/${activity.id}">
+              ${activity.title}
+            </a>
+          <br>
+          </li>
+          `
+        )
       })
     })
   }
@@ -46,7 +60,16 @@ $(document).ready(function() {
 
     $.post("/activities", activityParams, null, "json")
       .done(function(data) {
-        activity = new Activity(data.id, data.title, data.description, data.goal, data.rules, data.time, data.category_id, data.topics_attributes )
+        activity = new Activity(
+          data.id,
+          data.title,
+          data.description,
+          data.goal,
+          data.rules,
+          data.time,
+          data.category_id,
+          data.topics_attributes
+        )
         activity.renderShowLink($('#activity_list'))
         form.reset()
       })
