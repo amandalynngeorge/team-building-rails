@@ -21,8 +21,6 @@ class UsersController < ApplicationController
   # 2. Sorting the activities by time_needed in your JS
   def show
     @user = User.find_by(id: params[:id])
-    # @new_activity = Activity.new
-    # @new_activity.topics.build
     if @user.activities.first
       @activity = @user.activities.first
     else

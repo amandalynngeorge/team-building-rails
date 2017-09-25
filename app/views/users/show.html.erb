@@ -1,7 +1,7 @@
 <h4><a id="create_link" href="#">Create New Activity</a></h4>
 
 <div class="activityForm">
-<%= form_for(Activity.new) do |f| %>
+<%= form_for :activity, :url => new_activity_path do |f| %>
   <%= f.label "Title (required)" %><br>
   <%= f.text_field :title %> <br>
   <%= f.label "Description (required)" %><br>
