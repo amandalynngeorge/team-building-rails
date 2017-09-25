@@ -1,14 +1,14 @@
 $(document).ready(function() {
   $(".activityForm").hide()
-  $(".showActivity").hide()
-  renderActivities();
+  //$(".showActivity").hide()
+  //renderActivities();
 
   $("#create_link").on("click", function(event){
     event.preventDefault()
     $(".activityForm").toggle();
   })
 
-  function renderActivities() {
+  $(window).load(function() {
     var userId = parseInt($(".username_activities").attr("data-id"));
     $.get('/users/' + userId + "/activities.json", function(data) {
       $("#activity_list").html('')
@@ -30,7 +30,7 @@ $(document).ready(function() {
         )
       })
     })
-  }
+  })
 
   $('#activity_list').on("click", '.link', function() {
     event.preventDefault()

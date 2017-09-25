@@ -20,17 +20,9 @@ class UsersController < ApplicationController
   # 1. is move this JSON API route to /users/:user_id/activities
   # 2. Sorting the activities by time_needed in your JS
   def show
+    @activity = Activity.new
+    @activity.topics.build
     @user = User.find_by(id: params[:id])
-    if @user.activities.first
-      @activity = @user.activities.first
-    else
-      @activity = Activity.all.first
-    end
-
-    respond_to do |f|
-      f.html {render :show}
-      f.json {render json: @user}
-    end
   end
 
   def index

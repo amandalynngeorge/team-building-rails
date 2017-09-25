@@ -1,7 +1,7 @@
 <h4><a id="create_link" href="#">Create New Activity</a></h4>
 
 <div class="activityForm">
-<%= form_for :activity, :url => new_activity_path do |f| %>
+<%= form_for @activity do |f| %>
   <%= f.label "Title (required)" %><br>
   <%= f.text_field :title %> <br>
   <%= f.label "Description (required)" %><br>
@@ -30,23 +30,7 @@
 </ul>
 
 <div class="showActivity">
-  <h3 class="title"> <%=@activity.title%> </h3>
-  <h5>Description: </h5>
-  <p class="description"><%=@activity.description%></p>
-  <h5>Goal: </h5>
-  <p class="goal"><%=@activity.goal%></p>
-  <h5>Rules: </h5>
-  <p class="rules"><%=@activity.rules%></p>
-  <h5>Time Needed:</h5>
-  <p class="time"><%=@activity.time%> minutes</p>
-  <h5>Category:</h5>
-  <p class="category"><%=@activity.category.name%></p>
-  <h5>Topics:</h5>
-  <p class="topics"></p>
-  <div class="topic-div">
-  <%@activity.topics.each do |top|%>
-    <%=top.name%>
-  <%end%>
+  <p> Please pick an activity to find out more information about it</p>
 </div>
   <br><br>
 
