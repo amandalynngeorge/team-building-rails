@@ -1,7 +1,7 @@
-<h4><a id="create_link" href="/users/<%=@user.id%>/activities/new">Create New Activity</a></h4>
+<h4><a id="create_link" href="#">Create New Activity</a></h4>
 
 <div class="activityForm">
-<%= form_for @new_activity do |f| %>
+<%= form_for(Activity.new) do |f| %>
   <%= f.label "Title (required)" %><br>
   <%= f.text_field :title %> <br>
   <%= f.label "Description (required)" %><br>
@@ -19,16 +19,14 @@
     <%= field.text_field :name %><br>
   <%end%>
   <br>
-  <%= submit_tag nil, class: "submit"%>
+  <%= submit_tag "Create Activity" %>
 <%end%>
 </div>
 
 
 <h3 class="username_activities" data-id="<%=@user.id%>"> <%=@user.username%>'s Activities</h3>
 <ul id="activity_list">
-<% @activities.each do |act| %>
-<li><a class='link' data-id="<%=act.id%>" href="/users/<%=@user.id%>/activities/<%=act.id%>"><%=act.title%></a><br></li>
-  <%end%>
+
 </ul>
 
 <div class="showActivity">

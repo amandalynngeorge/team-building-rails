@@ -1,21 +1,22 @@
 $(document).ready(function() {
   $(".activityForm").hide()
   $(".showActivity").hide()
+  renderActivities();
 
   $("#create_link").on("click", function(event){
     event.preventDefault()
     $(".activityForm").toggle();
   })
 
-  $('#activity_list').on("load", function() {
-    var userId = parseInt($("#username").attr("data-id"));
-    $.get('/users/' + userId + ".json", function(data) {
-    $("#activity_list").html('')
-    data.activities.forEach(function(activity) {
-      $("#activity_list").append(`<li><a class='link' data-id="${activity.id}" href="/users/${user.id}/activities/${activity.id}">${activity.title}</a><br></li>`)
+  function renderActivities() {
+    var userId = parseInt($(".username_activities").attr("data-id"));
+    $.get('/users/' + userId + "/activities.json", function(data) {
+      $("#activity_list").html('')
+      var list = data.forEach(function(activity) {
+        $("#activity_list").append(`<li><a class='link' data-id="${activity.id}" href="/users/${userId}/activities/${activity.id}">${activity.title}</a><br></li>`)
+      })
     })
-    })
-  })
+  }
 
   $('#activity_list').on("click", '.link', function() {
     event.preventDefault()
@@ -37,15 +38,21 @@ $(document).ready(function() {
     });
   })
 
-  $('.submit').on("click", function(event) {
-    event.preventDefault()
-    var activity = $("form").serialize()
-    var activities = $.post("/activities", activity, null, "json").done(function(data) {
-      newActivity = new Activity(data.id, data.title, data.description, data.goal, data.rules, data.time, data.category_id, data.topics_attributes )
-      var activityHtml = newActivity.formatShowLink()
-      $('#activity_list').append(activityHtml)
-    }).fail(function(data){
-    })
+  $('#new_activity').on("submit", function(event) {
+    event.preventDefault();
+
+    var form = this;
+    var activityParams = $(form).serialize()
+
+    $.post("/activities", activityParams, null, "json")
+      .done(function(data) {
+        activity = new Activity(data.id, data.title, data.description, data.goal, data.rules, data.time, data.category_id, data.topics_attributes )
+        activity.renderShowLink($('#activity_list'))
+        form.reset()
+      })
+      .fail(function(error) {
+        console.log("Recieved error: ", error)
+      })
   })
 
 })
@@ -61,12 +68,20 @@ function Activity(id, title, description, goal, rules, time, category_id, topics
   this.topics_attributes = topics_attributes
 }
 
-Activity.prototype.formatShowLink = function() {
-  var userId = parseInt($("#username").attr("data-id"));
-  var activityHtml = `
-  <li><a class='link' data-id="${this.id}" href="/users/${userId}/activities/${this.id}">${this.title}</a><br></li>
-  `
-  return activityHtml
+Activity.prototype.renderShowLink = function(element) {
+  var userId = parseInt($(".username_activities").attr("data-id"));
+  element.append(`
+    <li>
+      <a
+        class='link'
+        data-id="${this.id}"
+        href="/users/${userId}/activities/${this.id}"
+      >
+        ${this.title}
+      </a>
+      <br>
+    </li>
+  `);
 }
 
 Activity.prototype.formatShow = function() {

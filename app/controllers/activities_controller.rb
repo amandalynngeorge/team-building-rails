@@ -25,10 +25,14 @@ class ActivitiesController < ApplicationController
   end
 
   def index
+    @activities = Activity.all
     if @category = Category.find_by(id: params[:category_id])
       @activities = @category.activities.alpha
     else
-      @activities = Activity.alpha
+      respond_to do |f|
+        f.html {render :index}
+        f.json {render json: @activities}
+      end
     end
   end
 
