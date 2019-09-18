@@ -8,7 +8,7 @@ Run bundle install.
 Run rake db:migrate.
 Run rake db:seed.
 Run rails s -p 4000.
-Open localhost:4000 in a browser and start using.
+Open localhost:4000/sign_in in a browser and start using.
 
 * Contributing
 
